@@ -17,7 +17,7 @@ build/
 *.swp
 
 # Dataset symlinks
-detectron/datasets/data/*
+#detectron/datasets/data/*
 !detectron/datasets/data/README.md
 
 # Generated C files
