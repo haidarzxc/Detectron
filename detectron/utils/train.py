@@ -54,7 +54,6 @@ def train_model():
     if 'final' in checkpoints:
         # The final model was found in the output directory, so nothing to do
         return checkpoints
-    print("HEE HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
     setup_model_for_training(model, weights_file, output_dir)
     training_stats = TrainingStats(model)
     CHECKPOINT_PERIOD = int(cfg.TRAIN.SNAPSHOT_ITERS / cfg.NUM_GPUS)
@@ -187,6 +186,7 @@ def setup_model_for_training(model, weights_file, output_dir):
 
 
 def add_model_training_inputs(model):
+    print("HEE HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
     """Load the training dataset and attach the training inputs to the model."""
     logger = logging.getLogger(__name__)
     logger.info('Loading dataset: {}'.format(cfg.TRAIN.DATASETS))
