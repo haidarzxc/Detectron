@@ -22,7 +22,6 @@
 # --------------------------------------------------------
 
 """Utilities driving the train_net binary"""
-zxcxzc
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -47,8 +46,8 @@ from detectron.utils.training_stats import TrainingStats
 import detectron.utils.env as envu
 import detectron.utils.net as nu
 
-zxcxzc
-def train_model():
+
+def train_mxczodel():
 
     """Model training loop."""
     model, weights_file, start_iter, checkpoints, output_dir = create_model()
