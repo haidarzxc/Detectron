@@ -49,6 +49,7 @@ import detectron.utils.net as nu
 
 
 def train_model():
+    print "xzcczxcxzczxcxzczxczx"
     """Model training loop."""
     model, weights_file, start_iter, checkpoints, output_dir = create_model()
     if 'final' in checkpoints:

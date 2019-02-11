@@ -92,8 +92,8 @@ def main():
     logger = setup_logging(__name__)
     logging.getLogger('detectron.roi_data.loader').setLevel(logging.INFO)
     args = parse_args()
-    logger.info('Called with args:')
-    logger.info(args)
+    # logger.info('Called with args:')
+    # logger.info(args)
     if args.cfg_file is not None:
         merge_cfg_from_file(args.cfg_file)
     if args.opts is not None:
@@ -111,6 +111,7 @@ def main():
     # non-deterministic cudnn functions).
     np.random.seed(cfg.RNG_SEED)
     # Execute the training run
+    print "xzcczxcxzczxcxzczxczx"
     checkpoints = detectron.utils.train.train_model()
     # Test the trained model
     if not args.skip_test:
