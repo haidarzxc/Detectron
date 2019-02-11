@@ -111,7 +111,7 @@ def main():
     # non-deterministic cudnn functions).
     np.random.seed(cfg.RNG_SEED)
     # Execute the training run
-    print "xzcczxcxzczxcxzczxczx"
+    print("xzcczxcxzczxcxzczxczx")
     checkpoints = detectron.utils.train.train_model()
     # Test the trained model
     if not args.skip_test:
