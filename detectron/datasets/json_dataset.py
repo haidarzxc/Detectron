@@ -62,6 +62,7 @@ class JsonDataset(object):
         self.name = name
         self.image_directory = dataset_catalog.get_im_dir(name)
         self.image_prefix = dataset_catalog.get_im_prefix(name)
+        print("---------------------------------> ",name)
         self.COCO = COCO(dataset_catalog.get_ann_fn(name))
         print("---------------------------------> ",self.COCO)
         self.debug_timer = Timer()
