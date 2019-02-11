@@ -47,7 +47,7 @@ import detectron.utils.env as envu
 import detectron.utils.net as nu
 
 
-def train_mxczodel():
+def train_model():
 
     """Model training loop."""
     model, weights_file, start_iter, checkpoints, output_dir = create_model()
