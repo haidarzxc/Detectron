@@ -47,7 +47,7 @@ import detectron.utils.segms as segm_utils
 
 logger = logging.getLogger(__name__)
 
-
+print("-------------------------",dataset_catalog)
 class JsonDataset(object):
     """A class representing a COCO json dataset."""
 
