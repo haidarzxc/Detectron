@@ -47,13 +47,12 @@ import detectron.utils.segms as segm_utils
 
 logger = logging.getLogger(__name__)
 
-print("-------------------------",dataset_catalog)
 class JsonDataset(object):
     """A class representing a COCO json dataset."""
 
     def __init__(self, name):
         assert dataset_catalog.contains(name), \
-            'Unknown dataset name: {}'.format(name)
+            'zxc Unknown dataset name: {}'.format(name)
         assert os.path.exists(dataset_catalog.get_im_dir(name)), \
             'Im dir \'{}\' not found'.format(dataset_catalog.get_im_dir(name))
         assert os.path.exists(dataset_catalog.get_ann_fn(name)), \
