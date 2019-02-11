@@ -186,7 +186,7 @@ def setup_model_for_training(model, weights_file, output_dir):
 
 
 def add_model_training_inputs(model):
-    print("HEE HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+    logger.info("hhhhhhhhhhhhhhhhhhhhh")
     """Load the training dataset and attach the training inputs to the model."""
     logger = logging.getLogger(__name__)
     logger.info('Loading dataset: {}'.format(cfg.TRAIN.DATASETS))
