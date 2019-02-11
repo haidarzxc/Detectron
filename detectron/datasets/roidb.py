@@ -39,7 +39,6 @@ def combined_roidb_for_training(dataset_names, proposal_files):
     which involves caching certain types of metadata for each roidb entry.
     """
     def get_roidb(dataset_name, proposal_file):
-        print("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
         ds = JsonDataset(dataset_name)
         roidb = ds.get_roidb(
             gt=True,

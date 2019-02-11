@@ -98,7 +98,7 @@ _DATASETS = {
     #         _DATA_DIR + '/coco/annotations/person_keypoints_valminusminival2014.json'
     # },
 }
-
+print(_DATASETS)
 
 def datasets():
     """Retrieve the list of available dataset names."""
