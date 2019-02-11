@@ -50,7 +50,6 @@ _DATASETS = {
             _DATA_DIR + '/storms/annotations/instances_val2017.json'
     },
 }
-print(_DATASETS)
 
 def datasets():
     """Retrieve the list of available dataset names."""
