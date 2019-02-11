@@ -106,6 +106,7 @@ def datasets():
 
 
 def contains(name):
+    print("---------------------------------> ",name)
     """Determine if the dataset is in the catalog."""
     return name in _DATASETS.keys()
 

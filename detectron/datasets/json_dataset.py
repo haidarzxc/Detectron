@@ -52,7 +52,6 @@ class JsonDataset(object):
     """A class representing a COCO json dataset."""
 
     def __init__(self, name):
-        print("---------------------------------> ",name)
         assert dataset_catalog.contains(name), \
             'Unknown dataset name: {}'.format(name)
         assert os.path.exists(dataset_catalog.get_im_dir(name)), \
