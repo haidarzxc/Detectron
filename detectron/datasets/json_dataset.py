@@ -51,12 +51,12 @@ class JsonDataset(object):
     """A class representing a COCO json dataset."""
 
     def __init__(self, name):
-        assert dataset_catalog.contains(name), \
-            'zxc Unknown dataset name: {}'.format(name)
-        assert os.path.exists(dataset_catalog.get_im_dir(name)), \
-            'Im dir \'{}\' not found'.format(dataset_catalog.get_im_dir(name))
-        assert os.path.exists(dataset_catalog.get_ann_fn(name)), \
-            'Ann fn \'{}\' not found'.format(dataset_catalog.get_ann_fn(name))
+        # assert dataset_catalog.contains(name), \
+        #     'Unknown dataset name: {}'.format(name)
+        # assert os.path.exists(dataset_catalog.get_im_dir(name)), \
+        #     'Im dir \'{}\' not found'.format(dataset_catalog.get_im_dir(name))
+        # assert os.path.exists(dataset_catalog.get_ann_fn(name)), \
+        #     'Ann fn \'{}\' not found'.format(dataset_catalog.get_ann_fn(name))
         logger.debug('Creating: {}'.format(name))
         self.name = name
         self.image_directory = dataset_catalog.get_im_dir(name)
