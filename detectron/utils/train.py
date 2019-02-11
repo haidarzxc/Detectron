@@ -47,7 +47,7 @@ from detectron.utils.training_stats import TrainingStats
 import detectron.utils.env as envu
 import detectron.utils.net as nu
 
-
+print "xzcczxcxzczxcxzczxczx"
 def train_model():
     print "xzcczxcxzczxcxzczxczx"
     """Model training loop."""
