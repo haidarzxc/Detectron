@@ -57,7 +57,6 @@ def datasets():
 
 
 def contains(name):
-    print("---------------------------------> ",name)
     """Determine if the dataset is in the catalog."""
     # return name in _DATASETS.keys()
     return True
@@ -70,7 +69,6 @@ def get_im_dir(name):
 
 def get_ann_fn(name):
     """Retrieve the annotation file for the dataset."""
-    print("---------------------------------> ",name)
     return _DATASETS[name][_ANN_FN]
 
 
