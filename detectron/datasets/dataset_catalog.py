@@ -68,7 +68,6 @@ def get_im_dir(name):
 
 
 def get_ann_fn(name):
-    print("============================",name,_DATASETS[name][_ANN_FN])
     """Retrieve the annotation file for the dataset."""
     return _DATASETS[name][_ANN_FN]
 
