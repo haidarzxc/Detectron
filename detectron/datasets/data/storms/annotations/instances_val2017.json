@@ -12,7 +12,7 @@
 			"url": "http:\/\/creativecommons.org\/licenses\/by-nc-sa\/2.0\/",
 			"id": 1,
 			"name": "Attribution-NonCommercial-ShareAlike License"
-		},
+		}
   ],
   "images":[
     {
@@ -23,7 +23,7 @@
 			"width": 640,
 			"date_captured": "2013-11-14 17:02:52",
 			"id": 397133
-		},
+		}
   ],
   "type":"instances",
   "annotations":[
@@ -35,13 +35,13 @@
 			"bbox": [473.07, 395.93, 38.65, 28.67],
 			"category_id": 18,
 			"id": 1768
-		},
+		}
   ],
   "categories":[
     {
 			"supercategory": "person",
 			"id": 1,
 			"name": "person"
-		},
+		}
   ]
 }
