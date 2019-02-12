@@ -93,18 +93,15 @@ class JsonDataset(object):
            - filter proposals based on a minimum side length
            - filter proposals that intersect with crowd regions
         """
-        print("before assert")
         assert gt is True or crowd_filter_thresh == 0, \
             'Crowd filter threshold must be 0 if ground-truth annotations ' \
             'are not included.'
         image_ids = self.COCO.getImgIds()
         image_ids.sort()
         roidb = copy.deepcopy(self.COCO.loadImgs(image_ids))
-        print("after roidb",roidb)
         for entry in roidb:
             self._prep_roidb_entry(entry)
         if gt:
-            print("in gt",roidb)
             # Include ground-truth object annotations
             self.debug_timer.tic()
             for entry in roidb:
@@ -125,7 +122,6 @@ class JsonDataset(object):
                 format(self.debug_timer.toc(average=False))
             )
         _add_class_assignments(roidb)
-        print("before retrun",roidb)
         return roidb
 
     def _prep_roidb_entry(self, entry):
