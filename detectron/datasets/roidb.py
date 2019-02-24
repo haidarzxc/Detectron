@@ -40,17 +40,20 @@ def combined_roidb_for_training(dataset_names, proposal_files):
     """
     def get_roidb(dataset_name, proposal_file):
         ds = JsonDataset(dataset_name)
+        print("ds",ds)
         roidb = ds.get_roidb(
             gt=True,
             proposal_file=proposal_file,
             crowd_filter_thresh=cfg.TRAIN.CROWD_FILTER_THRESH
         )
+        print("roidb",roidb)
         if cfg.TRAIN.USE_FLIPPED:
+            print("USE_FLIPPED",cfg.TRAIN.USE_FLIPPED)
             logger.info('Appending horizontally-flipped training examples...')
             extend_with_flipped_entries(roidb, ds)
         logger.info('Loaded dataset: {:s}'.format(ds.name))
         return roidb
-
+    print("roidb",roidb)
     if isinstance(dataset_names, basestring):
         dataset_names = (dataset_names, )
     if isinstance(proposal_files, basestring):
@@ -59,7 +62,9 @@ def combined_roidb_for_training(dataset_names, proposal_files):
         proposal_files = (None, ) * len(dataset_names)
     assert len(dataset_names) == len(proposal_files)
     roidbs = [get_roidb(*args) for args in zip(dataset_names, proposal_files)]
+    print("roidbs",roidbs)
     roidb = roidbs[0]
+    print("roidb",roidb)
     for r in roidbs[1:]:
         roidb.extend(r)
     roidb = filter_for_training(roidb)
