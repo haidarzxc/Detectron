@@ -99,7 +99,7 @@ class JsonDataset(object):
         image_ids = self.COCO.getImgIds()
         image_ids.sort()
         roidb = copy.deepcopy(self.COCO.loadImgs(image_ids))
-        print("deepcopy roidb",roidb)
+
         for entry in roidb:
             self._prep_roidb_entry(entry)
         if gt:
@@ -111,7 +111,7 @@ class JsonDataset(object):
                 '_add_gt_annotations took {:.3f}s'.
                 format(self.debug_timer.toc(average=False))
             )
-        print("_prep_roidb_entry roidb",roidb)
+
         if proposal_file is not None:
             # Include proposals from a file
             self.debug_timer.tic()
@@ -123,9 +123,9 @@ class JsonDataset(object):
                 '_add_proposals_from_file took {:.3f}s'.
                 format(self.debug_timer.toc(average=False))
             )
-        print("_add_class_assignments roidb",roidb)
+
         _add_class_assignments(roidb)
-        print("return roidb",roidb)
+
         return roidb
 
     def _prep_roidb_entry(self, entry):

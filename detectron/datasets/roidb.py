@@ -126,12 +126,12 @@ def filter_for_training(roidb):
                            (overlaps >= cfg.TRAIN.BG_THRESH_LO))[0]
         # image is only valid if such boxes exist
         valid = len(fg_inds) > 0 or len(bg_inds) > 0
-        print("valid",valid)
+
         if cfg.MODEL.KEYPOINTS_ON:
             # If we're training for keypoints, exclude images with no keypoints
             valid = valid and entry['has_visible_keypoints']
         return valid
-
+    print("roidb",roidb)
     num = len(roidb)
     filtered_roidb = [entry for entry in roidb if is_valid(entry)]
     num_after = len(filtered_roidb)
