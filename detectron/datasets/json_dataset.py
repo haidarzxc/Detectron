@@ -102,7 +102,7 @@ class JsonDataset(object):
         print("roidb",roidb)
         for entry in roidb:
             self._prep_roidb_entry(entry)
-        print("roidb",roidb)
+        print("1 roidb",roidb)
         if gt:
             # Include ground-truth object annotations
             self.debug_timer.tic()
@@ -112,6 +112,7 @@ class JsonDataset(object):
                 '_add_gt_annotations took {:.3f}s'.
                 format(self.debug_timer.toc(average=False))
             )
+        print("2 roidb",roidb)
 
         if proposal_file is not None:
             # Include proposals from a file
@@ -124,9 +125,9 @@ class JsonDataset(object):
                 '_add_proposals_from_file took {:.3f}s'.
                 format(self.debug_timer.toc(average=False))
             )
-
+        print("3 roidb",roidb)
         _add_class_assignments(roidb)
-
+        print("4RET roidb",roidb)
         return roidb
 
     def _prep_roidb_entry(self, entry):
