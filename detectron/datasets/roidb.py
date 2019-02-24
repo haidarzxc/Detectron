@@ -61,11 +61,11 @@ def combined_roidb_for_training(dataset_names, proposal_files):
     roidbs = [get_roidb(*args) for args in zip(dataset_names, proposal_files)]
 
     roidb = roidbs[0]
-    print("roidb",roidb)
+
     for r in roidbs[1:]:
         roidb.extend(r)
     roidb = filter_for_training(roidb)
-    print("roidb",roidb)
+
     logger.info('Computing bounding-box regression targets...')
     add_bbox_regression_targets(roidb)
     logger.info('done')
@@ -118,7 +118,7 @@ def filter_for_training(roidb):
         #   (1) At least one foreground RoI OR
         #   (2) At least one background RoI
         overlaps = entry['max_overlaps']
-        print("overlaps",overlaps)
+
         # find boxes with sufficient overlap
         fg_inds = np.where(overlaps >= cfg.TRAIN.FG_THRESH)[0]
         # Select background RoIs as those within [BG_THRESH_LO, BG_THRESH_HI)
@@ -180,12 +180,7 @@ def compute_bbox_regression_targets(entry):
 
 
 def _compute_and_log_stats(roidb):
-    print("--------------------------")
-    print("roidb",roidb)
-    print("roidb[0]",roidb[0])
-    print("roidb[0]['dataset']",roidb[0]['dataset'])
-
-    print("--------------------------")
+    
     classes = roidb[0]['dataset'].classes
     char_len = np.max([len(c) for c in classes])
     hist_bins = np.arange(len(classes) + 1)
