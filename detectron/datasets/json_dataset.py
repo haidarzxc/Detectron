@@ -437,6 +437,7 @@ def _add_class_assignments(roidb):
     """
     for entry in roidb:
         gt_overlaps = entry['gt_overlaps'].toarray()
+        print("gt_overlaps",gt_overlaps)
         # max overlap with gt over classes (columns)
         max_overlaps = gt_overlaps.max(axis=1)
         # gt class that had the max overlap
