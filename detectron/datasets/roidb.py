@@ -65,7 +65,7 @@ def combined_roidb_for_training(dataset_names, proposal_files):
     for r in roidbs[1:]:
         roidb.extend(r)
     roidb = filter_for_training(roidb)
-
+    print("filter_for_training roidb",roidb)
     logger.info('Computing bounding-box regression targets...')
     add_bbox_regression_targets(roidb)
     logger.info('done')
@@ -126,6 +126,7 @@ def filter_for_training(roidb):
                            (overlaps >= cfg.TRAIN.BG_THRESH_LO))[0]
         # image is only valid if such boxes exist
         valid = len(fg_inds) > 0 or len(bg_inds) > 0
+        print("valid",valid)
         if cfg.MODEL.KEYPOINTS_ON:
             # If we're training for keypoints, exclude images with no keypoints
             valid = valid and entry['has_visible_keypoints']
@@ -180,7 +181,7 @@ def compute_bbox_regression_targets(entry):
 
 
 def _compute_and_log_stats(roidb):
-    
+
     classes = roidb[0]['dataset'].classes
     char_len = np.max([len(c) for c in classes])
     hist_bins = np.arange(len(classes) + 1)
