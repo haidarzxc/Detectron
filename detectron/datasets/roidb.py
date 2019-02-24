@@ -52,8 +52,9 @@ def combined_roidb_for_training(dataset_names, proposal_files):
             logger.info('Appending horizontally-flipped training examples...')
             extend_with_flipped_entries(roidb, ds)
         logger.info('Loaded dataset: {:s}'.format(ds.name))
+        print("roidb",roidb)
         return roidb
-    print("roidb",roidb)
+
     if isinstance(dataset_names, basestring):
         dataset_names = (dataset_names, )
     if isinstance(proposal_files, basestring):
@@ -68,7 +69,7 @@ def combined_roidb_for_training(dataset_names, proposal_files):
     for r in roidbs[1:]:
         roidb.extend(r)
     roidb = filter_for_training(roidb)
-
+    print("roidb",roidb)
     logger.info('Computing bounding-box regression targets...')
     add_bbox_regression_targets(roidb)
     logger.info('done')
