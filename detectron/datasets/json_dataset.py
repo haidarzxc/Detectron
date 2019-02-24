@@ -62,10 +62,13 @@ class JsonDataset(object):
         self.image_directory = dataset_catalog.get_im_dir(name)
         self.image_prefix = dataset_catalog.get_im_prefix(name)
         self.COCO = COCO(dataset_catalog.get_ann_fn(name))
+        print("self.COCO",self.COCO)
         self.debug_timer = Timer()
         # Set up dataset classes
         category_ids = self.COCO.getCatIds()
+        print("category_ids",category_ids)
         categories = [c['name'] for c in self.COCO.loadCats(category_ids)]
+        print("categories",categories)
         self.category_to_id_map = dict(zip(categories, category_ids))
         self.classes = ['__background__'] + categories
         self.num_classes = len(self.classes)
@@ -437,7 +440,6 @@ def _add_class_assignments(roidb):
     """
     for entry in roidb:
         gt_overlaps = entry['gt_overlaps'].toarray()
-        print("gt_overlaps",gt_overlaps)
         # max overlap with gt over classes (columns)
         max_overlaps = gt_overlaps.max(axis=1)
         # gt class that had the max overlap
