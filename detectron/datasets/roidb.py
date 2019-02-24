@@ -67,7 +67,7 @@ def combined_roidb_for_training(dataset_names, proposal_files):
     logger.info('Computing bounding-box regression targets...')
     add_bbox_regression_targets(roidb)
     logger.info('done')
-    
+
     _compute_and_log_stats(roidb)
 
     return roidb
@@ -177,6 +177,12 @@ def compute_bbox_regression_targets(entry):
 
 
 def _compute_and_log_stats(roidb):
+    print("--------------------------")
+    print("roidb",roidb)
+    print("roidb[0]",roidb[0])
+    print("roidb[0]['dataset']",roidb[0]['dataset'])
+
+    print("--------------------------")
     classes = roidb[0]['dataset'].classes
     char_len = np.max([len(c) for c in classes])
     hist_bins = np.arange(len(classes) + 1)
