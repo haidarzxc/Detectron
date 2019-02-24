@@ -110,8 +110,10 @@ class JsonDataset(object):
                 '_add_gt_annotations took {:.3f}s'.
                 format(self.debug_timer.toc(average=False))
             )
+        print("PROPOSAL_FILES",proposal_file)
         if proposal_file is not None:
             # Include proposals from a file
+            print("PROPOSAL_FILES",proposal_file)
             self.debug_timer.tic()
             self._add_proposals_from_file(
                 roidb, proposal_file, min_proposal_size, proposal_limit,

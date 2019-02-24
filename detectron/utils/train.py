@@ -189,7 +189,7 @@ def add_model_training_inputs(model):
     """Load the training dataset and attach the training inputs to the model."""
     logger = logging.getLogger(__name__)
     logger.info('Loading dataset: {}'.format(cfg.TRAIN.DATASETS))
-    print("PROPOSAL_FILES",cfg.TRAIN.PROPOSAL_FILES)
+    
     roidb = combined_roidb_for_training(
         cfg.TRAIN.DATASETS, cfg.TRAIN.PROPOSAL_FILES
     )
