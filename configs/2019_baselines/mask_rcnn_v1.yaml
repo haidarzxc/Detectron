@@ -27,6 +27,10 @@ TRAIN:
   MAX_SIZE: 833
   BATCH_SIZE_PER_IM: 256
   RPN_PRE_NMS_TOP_N: 2000  # Per FPN level
+  # FG_THRESH: 1
+  # BG_THRESH_HI: 1
+  # BG_THRESH_LO: 1
+
 # TEST:
 #   DATASETS: ('storms_2017_val',)
 #   SCALE: 500

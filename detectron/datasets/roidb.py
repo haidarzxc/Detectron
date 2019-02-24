@@ -65,7 +65,6 @@ def combined_roidb_for_training(dataset_names, proposal_files):
     for r in roidbs[1:]:
         roidb.extend(r)
     roidb = filter_for_training(roidb)
-    print("filter_for_training roidb",roidb)
     logger.info('Computing bounding-box regression targets...')
     add_bbox_regression_targets(roidb)
     logger.info('done')
@@ -118,7 +117,7 @@ def filter_for_training(roidb):
         #   (1) At least one foreground RoI OR
         #   (2) At least one background RoI
         overlaps = entry['max_overlaps']
-
+        print("overlaps",overlaps)
         # find boxes with sufficient overlap
         fg_inds = np.where(overlaps >= cfg.TRAIN.FG_THRESH)[0]
         # Select background RoIs as those within [BG_THRESH_LO, BG_THRESH_HI)
@@ -131,7 +130,7 @@ def filter_for_training(roidb):
             # If we're training for keypoints, exclude images with no keypoints
             valid = valid and entry['has_visible_keypoints']
         return valid
-    print("roidb",roidb)
+
     num = len(roidb)
     filtered_roidb = [entry for entry in roidb if is_valid(entry)]
     num_after = len(filtered_roidb)
