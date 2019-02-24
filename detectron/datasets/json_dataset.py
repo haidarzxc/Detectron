@@ -102,6 +102,7 @@ class JsonDataset(object):
         print("roidb",roidb)
         for entry in roidb:
             self._prep_roidb_entry(entry)
+        print("roidb",roidb)
         if gt:
             # Include ground-truth object annotations
             self.debug_timer.tic()
