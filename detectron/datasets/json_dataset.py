@@ -99,7 +99,7 @@ class JsonDataset(object):
         image_ids = self.COCO.getImgIds()
         image_ids.sort()
         roidb = copy.deepcopy(self.COCO.loadImgs(image_ids))
-
+        print("roidb",roidb)
         for entry in roidb:
             self._prep_roidb_entry(entry)
         if gt:
