@@ -62,13 +62,13 @@ class JsonDataset(object):
         self.image_directory = dataset_catalog.get_im_dir(name)
         self.image_prefix = dataset_catalog.get_im_prefix(name)
         self.COCO = COCO(dataset_catalog.get_ann_fn(name))
-        print("self.COCO",self.COCO)
+
         self.debug_timer = Timer()
         # Set up dataset classes
         category_ids = self.COCO.getCatIds()
-        print("category_ids",category_ids)
+
         categories = [c['name'] for c in self.COCO.loadCats(category_ids)]
-        print("categories",categories)
+
         self.category_to_id_map = dict(zip(categories, category_ids))
         self.classes = ['__background__'] + categories
         self.num_classes = len(self.classes)
@@ -102,10 +102,10 @@ class JsonDataset(object):
         image_ids = self.COCO.getImgIds()
         image_ids.sort()
         roidb = copy.deepcopy(self.COCO.loadImgs(image_ids))
-        print("roidb",roidb)
+
         for entry in roidb:
             self._prep_roidb_entry(entry)
-        print("1 roidb",roidb)
+
         if gt:
             # Include ground-truth object annotations
             self.debug_timer.tic()
@@ -115,7 +115,7 @@ class JsonDataset(object):
                 '_add_gt_annotations took {:.3f}s'.
                 format(self.debug_timer.toc(average=False))
             )
-        print("2 roidb",roidb)
+
 
         if proposal_file is not None:
             # Include proposals from a file
@@ -128,9 +128,9 @@ class JsonDataset(object):
                 '_add_proposals_from_file took {:.3f}s'.
                 format(self.debug_timer.toc(average=False))
             )
-        print("3 roidb",roidb)
+
         _add_class_assignments(roidb)
-        print("4RET roidb",roidb)
+
         return roidb
 
     def _prep_roidb_entry(self, entry):
@@ -170,16 +170,16 @@ class JsonDataset(object):
         """Add ground truth annotation metadata to an roidb entry."""
         ann_ids = self.COCO.getAnnIds(imgIds=entry['id'], iscrowd=None)
         objs = self.COCO.loadAnns(ann_ids)
-        print("objs",objs)
+
         # Sanitize bboxes -- some are invalid
         valid_objs = []
         valid_segms = []
         width = entry['width']
         height = entry['height']
-        print("height x width",height,width)
+
         for obj in objs:
             # crowd regions are RLE encoded
-            print("is_poly()",segm_utils.is_poly(obj['segmentation']))
+
             if segm_utils.is_poly(obj['segmentation']):
                 # Valid polygons have >= 3 points, so require >= 6 coordinates
                 obj['segmentation'] = [
@@ -191,14 +191,13 @@ class JsonDataset(object):
                 continue
             # Convert form (x1, y1, w, h) to (x1, y1, x2, y2)
             x1, y1, x2, y2 = box_utils.xywh_to_xyxy(obj['bbox'])
-            print("x1, y1, x2, y2",x1, y1, x2, y2)
+
             x1, y1, x2, y2 = box_utils.clip_xyxy_to_image(
                 x1, y1, x2, y2, height, width
             )
-            print("IMG x1, y1, x2, y2",x1, y1, x2, y2)
+
             # Require non-zero seg area and more than 1x1 box size
-            print("obj['area'] > 0",(obj['area'] > 0))
-            print("x2 > x1 and y2 > y1",(x2 > x1 and y2 > y1))
+
             if obj['area'] > 0 and x2 > x1 and y2 > y1:
                 obj['clean_bbox'] = [x1, y1, x2, y2]
                 valid_objs.append(obj)
