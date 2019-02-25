@@ -170,13 +170,16 @@ class JsonDataset(object):
         """Add ground truth annotation metadata to an roidb entry."""
         ann_ids = self.COCO.getAnnIds(imgIds=entry['id'], iscrowd=None)
         objs = self.COCO.loadAnns(ann_ids)
+        print("objs",objs)
         # Sanitize bboxes -- some are invalid
         valid_objs = []
         valid_segms = []
         width = entry['width']
         height = entry['height']
+        print("height x width",height,width)
         for obj in objs:
             # crowd regions are RLE encoded
+            print("is_poly()",segm_utils.is_poly(obj['segmentation']))
             if segm_utils.is_poly(obj['segmentation']):
                 # Valid polygons have >= 3 points, so require >= 6 coordinates
                 obj['segmentation'] = [
@@ -192,6 +195,8 @@ class JsonDataset(object):
                 x1, y1, x2, y2, height, width
             )
             # Require non-zero seg area and more than 1x1 box size
+            print("obj['area'] > 0",(obj['area'] > 0))
+            print("x2 > x1 and y2 > y1",(x2 > x1 and y2 > y1))
             if obj['area'] > 0 and x2 > x1 and y2 > y1:
                 obj['clean_bbox'] = [x1, y1, x2, y2]
                 valid_objs.append(obj)
